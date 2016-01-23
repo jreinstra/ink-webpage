@@ -1,4 +1,5 @@
 var linkHandler = Plaid.create({
+    selectAccount: true,
     env: 'tartan',
     clientName: 'Ink.',
     key: 'a05be3540f330291f9677aecb315fe',
@@ -13,7 +14,7 @@ var linkHandler = Plaid.create({
         // Send the public_token to your app server here.
         // The metadata object contains info about the institution the
         // user selected and the account ID, if selectAccount is enabled.
-        addedPlaid(public_token);
+        addedPlaid(public_token, metadata.account_id);
     },
     onExit: function() {
         // The user exited the Link flow.

@@ -77,9 +77,9 @@ function initLoggedIn() {
     }
 }
 
-function addedPlaid(token) {
-    console.log("token: " + token);
-    apiPost("user/link", {"PLToken":token}, function(r) {
+function addedPlaid(token, account_id) {
+    console.log("id: " + account_id);
+    apiPost("user/link", {"PLToken":token, "account_id":account_id}, function(r) {
         localStorage[HAS_PLAID_NAME] = true;
         initLoggedIn();
     });
@@ -96,12 +96,12 @@ function loadMain() {
 function loadBalances() {
     apiGet("user/accounts", {}, function(r) {
         console.log(r);
-        checking = r.accounts.checking.balance;
-        savings = r.accounts.savings.balance;
+        checking = r.accounts.checking.balance;// + 1324223;
+        savings = r.accounts.savings.balance;// + 4398289;
         
-        $("#balance").html("$" + (checking + savings));
-        $("#checking").html("$" + checking);
-        $("#savings").html("$" + savings);
+        $("#balance").html("$" + addCommas((checking + savings).toFixed(2)));
+        $("#checking").html("$" + addCommas(checking.toFixed(2)));
+        $("#savings").html("$" + addCommas(savings.toFixed(2)));
         $("#paneMain").show();
         addGraph(checking, savings);
     });
@@ -109,7 +109,8 @@ function loadBalances() {
 
 function loadTransactions() {
     apiGet("user/transactions", {}, function(r) {
-        var transactions = r.transactions.transactions;
+        console.log(r);
+        var transactions = r.transactions;
         var lastDate = null;
         for(var i in transactions) {
             var t = transactions[i];
@@ -119,14 +120,23 @@ function loadTransactions() {
             }
             $("#transactionsList").append(
                 '<div class="t-merchant pull-left">' + t.name.substring(0, 14) + '</div>' +
-                '<div class="t-amount pull-right red">$' + t.amount + '</div><br><br><div class="pull-right green">Saved $0.40</div><br><br>'
+                '<div class="t-amount pull-right red">$' + t.amount.toFixed(2) + '</div><br><br>'
             );
+            if(t.amount_saved > 0) {
+                $("#transactionsList").append(
+                    '<div class="pull-right green">Saved $' + t.amount_saved.toFixed(2) + '</div><br><br>'
+                );
+            }
         }
     });
 }
 
 function dateFriendly(data) {
     return MONTHS[parseInt(data.substring(5, 7))] + " " + parseInt(data.substring(8));
+}
+
+function addCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 
@@ -137,7 +147,8 @@ function apiPost(method, params, success) {
             success(r);
         }
         else {
-            alert(r.message);
+            alert(r.message.resolve);
+            console.log(r);
         }
     });
 }
@@ -149,7 +160,8 @@ function apiGet(method, params, success) {
             success(r);
         }
         else {
-            alert(r.message);
+            alert(r.message.resolve);
+            console.log(r);
         }
     });
 }

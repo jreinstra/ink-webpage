@@ -17,7 +17,7 @@ function addGraph() {
       accounts: [checking, savings],
     };
 
-    var width = d3.select('#tabBalance').style('width');
+    var width = d3.select('#graph').style('width');
     var width = parseInt(width.substring(0, width.length), 10);
     console.log("width: " + width);
     if(!isNaN(width)) {
