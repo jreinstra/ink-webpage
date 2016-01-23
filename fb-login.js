@@ -1,6 +1,12 @@
 // This function is called when someone finishes with the Login
 // Button.  See the onlogin handler attached to it in the sample
 // code below.
+if(location.hostname == "getink.co"){
+    var APP_ID = '1944224352468659';
+} else {
+    var APP_ID = '1944227235801704';
+}
+
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
       mainInit(response);
@@ -9,7 +15,7 @@ function checkLoginState() {
 
 window.fbAsyncInit = function() {
     FB.init({
-        appId      : '1944227235801704',//local: 1944224352468659
+        appId      : APP_ID,
         cookie     : true,  // enable cookies to allow the server to access 
         // the session
         xfbml      : true,  // parse social plugins on this page
