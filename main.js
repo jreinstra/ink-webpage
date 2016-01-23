@@ -47,6 +47,8 @@ function login(fbResponse) {
 }
 
 function initLoggedIn() {
+    $("#paneLogin").hide();
+    
     if(localStorage[HAS_PLAID_NAME] == 'false') {
         $("#paneBankConnect").show();
     }
