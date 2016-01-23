@@ -1,27 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Facebook Login JavaScript Example</title>
+    <title>Ink.</title>
     <meta charset="UTF-8">
-    <link type="text/css" rel="stylesheet" href="https://bootswatch.com/journal/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <link type="text/css" rel="stylesheet" href="main.css">
+    <link type="text/css" rel="stylesheet" href="https://bootswatch.com/journal/bootstrap.min.css">
 </head>
 <body class="container">
-    <div id="paneLogin" class="row text-center fade-in" style="display:none;">
+    <div id="paneHeader" class="text-center fade-in">
         <h1>Welcome to Ink.</h1>
-        <br/><br/>
+        <br/>
+    </div>
+    <div id="paneLogin" class="row text-center fade-in" style="display:none;">
         <p class="lead">Please log into Facebook to continue.</p>
         <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" data-size="xlarge"></fb:login-button>
     </div>
-    <div id="paneBankConnect" class="row text-center" style="display:none;">
-        <h1>Setup your Ink Account.</h1>
-        <br/><br/>
+    <div id="paneBankConnect" class="row text-center fade-in" style="display:none;">
+        <p class="lead">Get Started with Ink.</p>
         <div id="linkButton" class="plaid-button">Link Bank Account with Plaid</div>
+    </div>
+    <div id="paneMain" style="display:none;">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <h1>Test HTML!</h1>
+                <p>g34g34g</p>
+                <p>g34g34g</p>
+                <p>g34g34g</p>
+                <p>g34g34g</p>
+                <p>g34g34g</p>
+                <p>g34g34g</p>
+                <p>g34g34g</p>
+            </div>
+            <div class="item">
+                <h1>Test HTML2!</h1>
+            </div>
+            <div class="item">
+                <h1>Test HTML3!</h1>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
     </div>
     
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="fb-login.js"></script>
     <script src="https://cdn.plaid.com/link/stable/link-initialize.js"></script>
     <script src="plaid-link.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

@@ -1,3 +1,15 @@
+h1 {
+    font-family: avenirNext;
+}
+
+.carousel-control {
+    background: none !important;
+}
+
+.carousel-control span {
+    color: black;
+}
+
 .plaid-button:hover {    
     background: #2A5A74;
     color: #fff;
@@ -76,4 +88,10 @@
 @-o-keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
+}
+
+/* Avenir Next Font Face */
+@font-face {
+    font-family: avenirNext;
+    src: url(avenir.ttc);
 }
