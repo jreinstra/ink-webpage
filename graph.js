@@ -1,6 +1,11 @@
-d3.select(window).on('resize', addGraph); 
+var resizeAdded = false;
 
 function addGraph() {
+    if(!resizeAdded) {
+        d3.select(window).on('resize', addGraph);
+        resizeAdded = true;
+    }
+    
     d3.select('svg').remove();
     
     var dataset = {
