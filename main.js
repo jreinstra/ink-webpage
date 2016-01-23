@@ -74,6 +74,11 @@ function addedPlaid(token) {
 function loadMain() {
     $("#tabBalance").resize(addGraph);
     
+    loadBalances();
+    loadTransactions();
+}
+
+function loadBalances() {
     apiGet("user/accounts", {}, function(r) {
         console.log(r);
         checking = r.accounts.checking.balance;
@@ -84,6 +89,12 @@ function loadMain() {
         $("#savings").html("$" + savings);
         $("#paneMain").show();
         addGraph(checking, savings);
+    });
+}
+
+function loadTransactions() {
+    apiGet("user/transactions", {}, function(r) {
+        console.log(r);
     });
 }
 

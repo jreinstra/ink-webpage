@@ -6,7 +6,7 @@ svg {
     height: auto;
     width: auto;
     position: relative;
-    bottom: 50px;
+    bottom: 100px;
 }
 
 .green {
@@ -20,13 +20,21 @@ svg {
 #balance {
     text-align: center;
     position: relative;
-    top: 250px;
+    top: 200px;
     font-size: 45px;
 }
 
 #balances {
     position: relative;
-    bottom: 350px;
+    bottom: 400px;
+}
+
+.t-merchant {
+    font-weight: bold;
+}
+
+.t-merchant, .t-amount {
+    font-size: 24px;
 }
 
 .carousel-control {
