@@ -10,6 +10,10 @@ h1 {
     color: black;
 }
 
+.carousel .item {
+    height: 500px;
+}
+
 .plaid-button:hover {    
     background: #2A5A74;
     color: #fff;
