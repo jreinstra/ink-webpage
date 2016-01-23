@@ -8,7 +8,7 @@
     <link type="text/css" rel="stylesheet" href="main.css">
     <link type="text/css" rel="stylesheet" href="https://bootswatch.com/journal/bootstrap.min.css">
 </head>
-<body class="container">
+<body>
     <div id="paneHeader" class="text-center fade-in">
         <h1>Welcome to Ink.</h1>
         <br/>
@@ -32,15 +32,13 @@
 
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <h1>Test HTML!</h1>
-                <p>g34g34g</p>
-                <p>g34g34g</p>
-                <p>g34g34g</p>
-                <p>g34g34g</p>
-                <p>g34g34g</p>
-                <p>g34g34g</p>
-                <p>g34g34g</p>
+            <div id="tabBalance" class="item active">
+                <h1 id="balance" class="green">$7,487.</h1>
+                <div id="graph"></div>
+                <div id="balances" class="row text-center">
+                        <h2>Checking Balance: <span class="red">$4,546</span>.</h2>
+                        <h2>Savings: <span class="green">$2,489</span>.</h2>
+                </div>
             </div>
             <div class="item">
                 <h1>Test HTML2!</h1>
@@ -68,5 +66,8 @@
     <script src="https://cdn.plaid.com/link/stable/link-initialize.js"></script>
     <script src="plaid-link.js"></script>
     <script src="main.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.13/d3.min.js"></script>
+    <script src="graph.js"></script>
 </body>
 </html>

@@ -2,6 +2,33 @@ h1 {
     font-family: avenirNext;
 }
 
+svg {
+    height: auto;
+    width: auto;
+    position: relative;
+    bottom: 50px;
+}
+
+.green {
+    color: rgb(46,204,113);
+}
+
+.red {
+    color: rgb(239,72,54);
+}
+
+#balance {
+    text-align: center;
+    position: relative;
+    top: 250px;
+    font-size: 45px;
+}
+
+#balances {
+    position: relative;
+    bottom: 350px;
+}
+
 .carousel-control {
     background: none !important;
 }

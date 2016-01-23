@@ -56,20 +56,44 @@ function initLoggedIn() {
         // load user data
         $("#paneBankConnect").hide();
         $("#paneMain").show();
+        loadMain();
     }
 }
 
 function addedPlaid(token) {
     console.log("token: " + token);
-    apiCall("user/link", {"PLToken":token}, function(r) {
+    apiPost("user/link", {"PLToken":token}, function(r) {
         localStorage[HAS_PLAID_NAME] = true;
         initLoggedIn();
     });
 }
 
-function apiCall(method, params, success) {
+
+function loadMain() {
+    $("#tabBalance").resize(addGraph);
+    addGraph();
+    
+    apiGet("user/accounts", {}, function(r) {
+        console.log(r);
+    });
+}
+
+
+function apiPost(method, params, success) {
     params["token"] = localStorage[AUTH_TOKEN_NAME];
     $.post(BASE_URL + method, params, function(r) {
+        if(r.success == true) {
+            success(r);
+        }
+        else {
+            alert(r.message);
+        }
+    });
+}
+
+function apiGet(method, params, success) {
+    params["token"] = localStorage[AUTH_TOKEN_NAME];
+    $.get(BASE_URL + method, params, function(r) {
         if(r.success == true) {
             success(r);
         }
