@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Facebook Login JavaScript Example</title>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="https://bootswatch.com/journal/bootstrap.min.css">
+</head>
+<body class="container">
+    <div class="row text-center">
+        <h1>Welcome to Ink.</h1>
+        <br/><br/>
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" data-size="xlarge"></fb:login-button>
+        <p id="status" class="lead"></p>
+    </div>
+    <div id="linkButton" class="btn btn-success">Link your Bank Account!</div>
+    
+    <script src="fb-login.js"></script>
+    <script src="https://cdn.plaid.com/link/stable/link-initialize.js"></script>
+    <script src="plaid-link.js"></script>
+</body>
+</html>
