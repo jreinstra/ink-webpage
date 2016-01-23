@@ -94,7 +94,19 @@ function loadBalances() {
 
 function loadTransactions() {
     apiGet("user/transactions", {}, function(r) {
-        console.log(r);
+        var transactions = r.transactions.transactions;
+        var lastDate = null;
+        for(var i in transactions) {
+            var t = transactions[i];
+            if(t.date != lastDate) {
+                lastDate = t.date;
+                $("#transactionsList").append("<h3>" + lastDate + "</h3><hr>");
+            }
+            $("#transactionsList").append(
+                '<div class="t-merchant pull-left">' + t.name.substring(0, 15) + '</div>' +
+                '<div class="t-amount pull-right red">$' + t.amount + '</div><br><br>'
+            );
+        }
     });
 }
 
