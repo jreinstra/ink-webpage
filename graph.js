@@ -4,11 +4,12 @@ function addGraph() {
     d3.select('svg').remove();
     
     var dataset = {
-      accounts: [53245, 28479],
+      accounts: [checking, savings],
     };
 
     var width = d3.select('#tabBalance').style('width');
     var width = parseInt(width.substring(0, width.length), 10);
+    console.log("width: " + width);
 
     var height = 600,
         radius = Math.min(width, height) / 2;

@@ -10,6 +10,9 @@ var USER_ID_NAME = "userID";
 var AUTH_TOKEN_NAME = "authToken";
 var HAS_PLAID_NAME = "hasPlaidToken";
 
+var checking = 0;
+var savings = 0;
+
 function mainInit(fbResponse) {
     if(localStorage[USER_ID_NAME] && localStorage[AUTH_TOKEN_NAME]) {
         if(localStorage[HAS_PLAID_NAME] == 'false') {
@@ -55,7 +58,6 @@ function initLoggedIn() {
     else {
         // load user data
         $("#paneBankConnect").hide();
-        $("#paneMain").show();
         loadMain();
     }
 }
@@ -71,10 +73,17 @@ function addedPlaid(token) {
 
 function loadMain() {
     $("#tabBalance").resize(addGraph);
-    addGraph();
     
     apiGet("user/accounts", {}, function(r) {
         console.log(r);
+        checking = r.accounts.checking.balance;
+        savings = r.accounts.savings.balance;
+        
+        $("#balance").html("$" + (checking + savings));
+        $("#checking").html("$" + checking);
+        $("#savings").html("$" + savings);
+        $("#paneMain").show();
+        addGraph(checking, savings);
     });
 }
 
