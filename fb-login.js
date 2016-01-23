@@ -1,5 +1,5 @@
 // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
+function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
     // The response object is returned with a status field that lets the
@@ -7,19 +7,22 @@
     // Full docs on the response object can be found in the documentation
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      testAPI();
+        // Logged into your app and Facebook.
+        $("#paneLogin").hide();
+        // send response.authResponse.accessToken to Jose & get user ID & account setup status
+        // save user ID, API token and account setup status
+        $("#paneBankConnect").show();
+        
+        testAPI();
     } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+        // The person is logged into Facebook, but not your app.
+        $("#paneLogin").show();
     } else {
-      // The person is not logged into Facebook, so we're not sure if
-      // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+        // The person is not logged into Facebook, so we're not sure if
+        // they are logged into this app or not.
+        $("#paneLogin").show();
     }
-  }
+}
 
   // This function is called when someone finishes with the Login
   // Button.  See the onlogin handler attached to it in the sample
@@ -69,10 +72,10 @@
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
+      console.log('Welcome!  Fetching your information.... ');
+      FB.api('/me', function(response) {
+          //response.id, response.name
+          console.log('Successful login for: ' + response.name);
+          $("#status").html('Thanks for logging in, ' + response.name + '!');
+      });
   }

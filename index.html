@@ -4,16 +4,22 @@
     <title>Facebook Login JavaScript Example</title>
     <meta charset="UTF-8">
     <link type="text/css" rel="stylesheet" href="https://bootswatch.com/journal/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="main.css">
 </head>
 <body class="container">
-    <div class="row text-center">
+    <div id="paneLogin" class="row text-center fade-in" style="display:none;">
         <h1>Welcome to Ink.</h1>
         <br/><br/>
+        <p class="lead">Please log into Facebook to continue.</p>
         <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" data-size="xlarge"></fb:login-button>
-        <p id="status" class="lead"></p>
     </div>
-    <div id="linkButton" class="btn btn-success">Link your Bank Account!</div>
+    <div id="paneBankConnect" class="row text-center" style="display:none;">
+        <h1>Setup your Ink Account.</h1>
+        <br/><br/>
+        <div id="linkButton" class="plaid-button">Link Bank Account with Plaid</div>
+    </div>
     
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script src="fb-login.js"></script>
     <script src="https://cdn.plaid.com/link/stable/link-initialize.js"></script>
     <script src="plaid-link.js"></script>
