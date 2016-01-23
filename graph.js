@@ -3,7 +3,7 @@ var resizeAdded = false;
 function addGraph() {
     if(!resizeAdded) {
         d3.select(window).on('resize', addGraph);
-        $("body").click(function(e) {
+        $(".nav-arrow").click(function(e) {
             setTimeout(function() {
                 addGraph();
             }, 300);
