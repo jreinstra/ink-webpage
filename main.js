@@ -10,6 +10,21 @@ var USER_ID_NAME = "userID";
 var AUTH_TOKEN_NAME = "authToken";
 var HAS_PLAID_NAME = "hasPlaidToken";
 
+var MONTHS = {
+    1:"January",
+    2:"February",
+    3:"March",
+    4:"April",
+    5:"May",
+    6:"June",
+    7:"July",
+    8:"August",
+    9:"September",
+    10:"October",
+    11:"November",
+    12:"December"
+};
+
 var checking = 0;
 var savings = 0;
 
@@ -100,7 +115,7 @@ function loadTransactions() {
             var t = transactions[i];
             if(t.date != lastDate) {
                 lastDate = t.date;
-                $("#transactionsList").append("<h3>" + lastDate + "</h3><hr>");
+                $("#transactionsList").append("<h3>" + dateFriendly(lastDate) + "</h3><hr>");
             }
             $("#transactionsList").append(
                 '<div class="t-merchant pull-left">' + t.name.substring(0, 15) + '</div>' +
@@ -108,6 +123,10 @@ function loadTransactions() {
             );
         }
     });
+}
+
+function dateFriendly(data) {
+    return MONTHS[parseInt(data.substring(5, 7))] + " " + parseInt(data.substring(8));
 }
 
 
