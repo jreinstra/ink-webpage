@@ -118,8 +118,8 @@ function loadTransactions() {
                 $("#transactionsList").append("<h3>" + dateFriendly(lastDate) + "</h3><hr>");
             }
             $("#transactionsList").append(
-                '<div class="t-merchant pull-left">' + t.name.substring(0, 15) + '</div>' +
-                '<div class="t-amount pull-right red">$' + t.amount + '</div><br><br>'
+                '<div class="t-merchant pull-left">' + t.name.substring(0, 14) + '</div>' +
+                '<div class="t-amount pull-right red">$' + t.amount + '</div><br><br><div class="pull-right green">Saved $0.40</div><br><br>'
             );
         }
     });

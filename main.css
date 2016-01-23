@@ -39,8 +39,13 @@ svg {
     font-weight: bold;
 }
 
-.t-merchant, .t-amount {
+.t-merchant, .t-amount, .t-saved {
     font-size: 24px;
+}
+
+.t-saved {
+    position: relative;
+    left: 200px;
 }
 
 .carousel-control {
