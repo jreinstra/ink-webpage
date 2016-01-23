@@ -3,7 +3,7 @@
 // code below.
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
+      mainInit(response);
   });
 }
 
