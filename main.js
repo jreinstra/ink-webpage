@@ -190,7 +190,7 @@ function loadTransactions() {
 }
 
 function manualSave(e) {
-    var amount = parseInt($("#inputAmount").val());
+    var amount = parseFloat($("#inputAmount").val());
     if(!isNaN(amount) && amount > 0 && amount < checking) {
         $("#saveAmount").html("$" + amount.toFixed(2));
         $("#saveForm").hide();
@@ -212,7 +212,7 @@ function manualSave(e) {
         });
     }
     else {
-        alert("You must enter a valid amount to save out of your unsaved money.");
+        alert("You must enter between $1.00 and $" + checking + ".");
     }
 }
 
