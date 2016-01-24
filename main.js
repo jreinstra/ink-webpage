@@ -141,22 +141,27 @@ function timeAgo(timestamp) {
     var current = Math.floor(Date.now() / 1000);
     var diff = current - timestamp;
     if(diff <= 60) {
-        return diff + " secs ago.";
+        var num = diff;
+        var quantity = "sec";
     }
     else if(diff <= 3600) {
-        var mins = Math.floor(diff / 60);
-        if(diff < 120) {
-            return mins + " min ago.";
-        }
-        else {
-            return mins + " mins ago.";
-        }
+        var num = Math.floor(diff / 60);
+        var quantity = "min";
     }
     else if(diff <= 86400) {
-        return Math.floor(diff / 3600) + " hours ago.";
+        var num = Math.floor(diff / 3600);
+        var quantity = "hour";
     }
     else {
-        return Math.floor(diff / 86400) + " days ago.";
+        var num = Math.floor(diff / 86400);
+        var quantity = "day";
+    }
+    
+    if(num == 1) {
+        return num + " " + quantity + " ago.";
+    }
+    else {
+        return num + " " + quantity + "s ago.";
     }
 }
 
