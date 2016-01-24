@@ -105,6 +105,31 @@ function loadBalances() {
         $("#savings").html("$" + addCommas(savings.toFixed(2)));
         $("#paneMain").show();
         addGraph(checking, savings);
+        loadFeed();
+    });
+}
+
+function loadFeed() {
+    $("#feedItems").hide();
+    
+    apiGet("user/feed", {}, function(r) {
+        $("#feedItems").show();
+        console.log(r);
+        var items = r.feed;
+        for(var i in items) {
+            var item = items[i];
+            if(item.penalty == true) {
+                var color = "red";
+            }
+            else {
+                var color = "green";
+            }
+            $("#feedItems").append('<p class="lead ' + color + '">' + item.message + '</div>');
+        }
+        
+        if(items.length == 0) {
+            $("#feedItems").html('<p class="lead green">No items yet!</p>');
+        }
     });
 }
 
@@ -125,7 +150,7 @@ function loadTransactions() {
             );
             if(t.amount_saved > 0) {
                 $("#transactionsList").append(
-                    '<div class="pull-right green">Saved $' + t.amount_saved.toFixed(2) + '</div><br><br>'
+                    '<div class="pull-right green">Saved $' + t.amount_saved.toFixed(2) + '!</div><br><br>'
                 );
             }
         }
@@ -137,11 +162,22 @@ function manualSave(e) {
     if(!isNaN(amount) && amount > 0 && amount < checking) {
         $("#saveAmount").html("$" + amount.toFixed(2));
         $("#saveForm").hide();
-        $("#saveMessage").show();
-        setTimeout(function() {
-            $("#saveMessage").hide();
-            $("#saveForm").show();
-        }, 3000);
+        $("#saveLoading").show();
+        apiPost("user/transfer", {"amount":amount}, function(r) {
+            console.log(r);
+            $("#saveLoading").hide();
+            if(r.success == true) {
+                $("#saveMessage").show();
+                setTimeout(function() {
+                    $("#saveMessage").hide();
+                    $("#saveForm").show();
+                }, 3000);
+                loadBalances();
+            }
+            else {
+                $("#saveForm").show();
+            }
+        });
     }
     else {
         alert("You must enter a valid amount to save out of your unsaved money.");

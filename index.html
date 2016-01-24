@@ -35,32 +35,9 @@
                             <h2>What you've saved: <span id="savings" class="green"></span>.</h2>
                     </div>
                 </div>
-                <div id="tabNotifications" class="col-sm-6 text-center">
+                <div id="tabFeed" class="col-sm-6 text-center">
                     <h1>Updates</h1>
-                    <p class="lead red">
-                        You forgot to save yesterday!
-                    </p>
-                    <p class="lead green">
-                        You saved five days in a row! Congrats!
-                    </p>
-                    <p class="lead red">
-                        You forgot to save yesterday!
-                    </p>
-                    <p class="lead green">
-                        You saved five days in a row! Congrats!
-                    </p>
-                    <p class="lead red">
-                        You forgot to save yesterday!
-                    </p>
-                    <p class="lead green">
-                        You saved five days in a row! Congrats!
-                    </p>
-                    <p class="lead red">
-                        You forgot to save yesterday!
-                    </p>
-                    <p class="lead green">
-                        You saved five days in a row! Congrats!
-                    </p>
+                    <div id="feedItems" style="display:none;"></div>
                 </div>
             </div>
             <div id="tabTransactions" class="item text-center">
@@ -81,6 +58,9 @@
                         <input type="number" class="form-control" id="inputAmount" placeholder="Enter $ to save">
                     </div>
                     <button id="saveSubmit" class="btn btn-success">Save More Money</button>
+                </div>
+                <div id="saveLoading" style="display:none" class="lead">
+                    Saving...
                 </div>
                 <div id="saveMessage" style="display:none" class="lead">
                     You successfully committed to save <span id="saveAmount" class="green"></span>!
