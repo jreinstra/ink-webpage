@@ -91,7 +91,9 @@ function loadMain() {
     
     loadBalances();
     loadTransactions();
+    
     $("#saveSubmit").click(manualSave);
+    setInterval(loadFeed, 60000);
 }
 
 function loadBalances() {
@@ -110,8 +112,6 @@ function loadBalances() {
 }
 
 function loadFeed() {
-    $("#feedItems").hide();
-    
     apiGet("user/feed", {}, function(r) {
         $("#feedItems").html('');
         $("#feedItems").show();
@@ -144,7 +144,13 @@ function timeAgo(timestamp) {
         return diff + " secs ago.";
     }
     else if(diff <= 3600) {
-        return Math.floor(diff / 60) + " mins ago.";
+        var mins = Math.floor(diff / 60);
+        if(diff < 120) {
+            return mins + " min ago.";
+        }
+        else {
+            return mins + " mins ago.";
+        }
     }
     else if(diff <= 86400) {
         return Math.floor(diff / 3600) + " hours ago.";
