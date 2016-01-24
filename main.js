@@ -113,6 +113,7 @@ function loadFeed() {
     $("#feedItems").hide();
     
     apiGet("user/feed", {}, function(r) {
+        $("#feedItems").html('');
         $("#feedItems").show();
         console.log(r);
         var items = r.feed;
