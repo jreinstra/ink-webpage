@@ -166,8 +166,8 @@ function apiPost(method, params, success) {
             success(r);
         }
         else {
-            alert(r.message.resolve);
             console.log(r);
+            alert(r.message.resolve);
         }
     });
 }
@@ -181,8 +181,8 @@ function apiGet(method, params, success) {
             success(r);
         }
         else {
-            alert(r.message.resolve);
             console.log(r);
+            alert(r.message.resolve);
         }
     });
 }
