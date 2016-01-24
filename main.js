@@ -138,6 +138,10 @@ function manualSave(e) {
         $("#saveAmount").html("$" + amount.toFixed(2));
         $("#saveForm").hide();
         $("#saveMessage").show();
+        setTimeout(function() {
+            $("#saveMessage").hide();
+            $("#saveForm").show();
+        }, 3000);
     }
     else {
         alert("You must enter a valid amount to save out of your unsaved money.");
