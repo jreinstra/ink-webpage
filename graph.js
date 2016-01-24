@@ -6,7 +6,7 @@ function addGraph() {
         $(".nav-arrow").click(function(e) {
             setTimeout(function() {
                 addGraph();
-            }, 300);
+            }, 30);
         });
         resizeAdded = true;
     }

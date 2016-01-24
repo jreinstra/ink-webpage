@@ -2,7 +2,7 @@ var linkHandler = Plaid.create({
     selectAccount: true,
     env: 'tartan',
     clientName: 'Ink.',
-    key: 'a05be3540f330291f9677aecb315fe',
+    key: 'f2f9cc021ab55c080a2b73ab5f5a13',
     product: 'auth',
     // To use Link with longtail institutions on Connect, set the
     // 'longTail' option to true:

@@ -73,18 +73,28 @@
                 </div>
                 
             </div>
-            <div class="item">
-                <h1>Test HTML3!</h1>
+            <div class="item text-center">
+                <h1>Save More Money</h1>
+                <p class="lead">Manually commit to saving more.</p>
+                <div id="saveForm">
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="inputAmount" placeholder="Enter $ to save">
+                    </div>
+                    <button id="saveSubmit" class="btn btn-success">Save More Money</button>
+                </div>
+                <div id="saveMessage" style="display:none" class="lead">
+                    You successfully committed to save <span id="saveAmount" class="green"></span>!
+                </div>
             </div>
           </div>
 
           <!-- Controls -->
-          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left nav-arrow" aria-hidden="true"></span>
+          <a class="left carousel-control nav-arrow" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a>
-          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right nav-arrow" aria-hidden="true"></span>
+          <a class="right carousel-control nav-arrow" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
         </div>

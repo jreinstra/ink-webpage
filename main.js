@@ -91,6 +91,7 @@ function loadMain() {
     
     loadBalances();
     loadTransactions();
+    $("#saveSubmit").click(manualSave);
 }
 
 function loadBalances() {
@@ -131,6 +132,18 @@ function loadTransactions() {
     });
 }
 
+function manualSave(e) {
+    var amount = parseInt($("#inputAmount").val());
+    if(!isNaN(amount) && amount > 0 && amount < checking) {
+        $("#saveAmount").html("$" + amount.toFixed(2));
+        $("#saveForm").hide();
+        $("#saveMessage").show();
+    }
+    else {
+        alert("You must enter a valid amount to save out of your unsaved money.");
+    }
+}
+
 function dateFriendly(data) {
     return MONTHS[parseInt(data.substring(5, 7))] + " " + parseInt(data.substring(8));
 }
@@ -141,6 +154,8 @@ function addCommas(x) {
 
 
 function apiPost(method, params, success) {
+    console.log("post " + method);
+    
     params["token"] = localStorage[AUTH_TOKEN_NAME];
     $.post(BASE_URL + method, params, function(r) {
         if(r.success == true) {
@@ -154,6 +169,8 @@ function apiPost(method, params, success) {
 }
 
 function apiGet(method, params, success) {
+    console.log("get " + method);
+    
     params["token"] = localStorage[AUTH_TOKEN_NAME];
     $.get(BASE_URL + method, params, function(r) {
         if(r.success == true) {

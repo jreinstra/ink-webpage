@@ -58,6 +58,11 @@ svg {
     left: 200px;
 }
 
+#inputAmount {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
 .carousel-control {
     background: none !important;
 }
