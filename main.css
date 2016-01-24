@@ -1,4 +1,4 @@
-h1, p {
+h1, p, span {
     font-family: avenirNext;
 }
 
@@ -19,6 +19,10 @@ svg {
 
 #tabMain {
     overflow-y: scroll;
+}
+
+#tabFeed span {
+    margin-right: 15px;
 }
 
 #tabBalance {

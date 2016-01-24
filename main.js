@@ -125,13 +125,33 @@ function loadFeed() {
             else {
                 var color = "green";
             }
-            $("#feedItems").append('<p class="lead ' + color + '">' + item.message + '</div>');
+            $("#feedItems").append(
+                '<div><span class="lead ' + color + '">' + item.message + '</span><br>' +
+                '<span class="pull-right">' + timeAgo(item.timestamp) + '</span></div><br>'
+            );
         }
         
         if(items.length == 0) {
             $("#feedItems").html('<p class="lead green">No items yet!</p>');
         }
     });
+}
+
+function timeAgo(timestamp) {
+    var current = Math.floor(Date.now() / 1000);
+    var diff = current - timestamp;
+    if(diff <= 60) {
+        return diff + " secs ago.";
+    }
+    else if(diff <= 3600) {
+        return Math.floor(diff / 60) + " mins ago.";
+    }
+    else if(diff <= 86400) {
+        return Math.floor(diff / 3600) + " hours ago.";
+    }
+    else {
+        return Math.floor(diff / 86400) + " days ago.";
+    }
 }
 
 function loadTransactions() {
